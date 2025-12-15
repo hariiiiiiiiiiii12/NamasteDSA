@@ -1,0 +1,40 @@
+/**
+ * @param {string} haystack
+ * @param {string} needle
+ * @return {number}
+ */
+var strStr = function (haystack, needle) {
+    let i = 0
+    let j = haystack.length - 1;
+    let ans = -2;
+
+    while (i < haystack.length && j > -1) {
+        if (haystack[i] != needle[0]) {
+            i++;
+        }
+        else if (haystack[j] != needle[needle.length - 1]) {
+            j--;
+        }
+        else if (haystack[i] == needle[0] && haystack[j] == needle[needle.length - 1]) {
+            break;
+        }
+    }
+    if(i == haystack.length || j < 0) return -1;
+    if (haystack[i] == needle[0] && haystack[j] == needle[needle.length - 1]) {
+        ans = i;
+        let needleIterator = 0
+        j = needle.length - 1 + i;
+        while (i <= j) {
+            if (haystack[i] == needle[needleIterator]) {
+                console.log(`i - ${i}, needleIterator - ${needleIterator}`)
+                needleIterator++;
+                i++;
+            }
+            else {
+                return -1
+            }
+        }
+
+    }
+    return ans; 
+};
