@@ -13,21 +13,22 @@ function heapSort(arr) {
   return arr;
 }
 function heapifyDown(arr, i, n) {
-  let largest = i;
-  let left = 2 * i + 1;
-  let right = 2 * i + 2;
+  let largestIndex = i;
+  let leftChildIndex = 2 * i + 1;
+  let rightChildIndex = 2 * i + 2;
 
-  if (left < n && arr[left] > arr[largest]) {
-    largest = left;
+  if (leftChildIndex < n && arr[leftChildIndex] > arr[largestIndex]) {
+    // leftChildIndex < n helps ignore leaf nodes
+    largestIndex = leftChildIndex;
   }
 
-  if (right < n && arr[right] > arr[largest]) {
-    largest = right;
+  if (rightChildIndex < n && arr[rightChildIndex] > arr[largestIndex]) {
+    largestIndex = rightChildIndex;
   }
 
-  if (largest != i) {
-    [arr[i], arr[largest]] = [arr[largest], arr[i]];
-    heapifyDown(arr, largest, n);
+  if (largestIndex != i) {
+    [arr[i], arr[largestIndex]] = [arr[largestIndex], arr[i]];
+    heapifyDown(arr, largestIndex, n);
   }
 }
 
