@@ -21,7 +21,7 @@ class MinHeap {
   insert(val) {
     this.heapArray.push(val);
     let lastIndex = this.heapArray.length - 1;
-    this.heapifyUp(lastIndex);
+    this.heapifyUp(lastIndex); // check inserted element with parent to check if heap property is intact.
   }
 
   heapifyUp(i) {
@@ -40,7 +40,7 @@ class MinHeap {
     }
   }
 
-  extractMin() {
+  extractMin() { //extractMin as it is min heap
     if (this.heapArray.length === 0) return null;
 
     let min = this.heapArray[0];
@@ -84,7 +84,7 @@ class MinHeap {
         this.heapArray[smallestIndex],
         this.heapArray[currentIndex],
       ];
-      this.heapifyDown(smallestIndex);
+      this.heapifyDown(smallestIndex); //Why call heapifyDown with smallestIndex and not currentIndex? Because after the swap, the element that may still violate the heap property has moved to smallestIndex, not stayed at currentIndex.
     }
   }
 
