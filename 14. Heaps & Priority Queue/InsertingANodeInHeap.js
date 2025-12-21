@@ -87,6 +87,12 @@ class MinHeap {
       this.heapifyDown(smallestIndex);
     }
   }
+
+  // peek operation
+  peek() {
+    if (!this.heapArray.length) return null;
+    return this.heapArray[0];
+  }
 }
 
 let heap = new MinHeap();
