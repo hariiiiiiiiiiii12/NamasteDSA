@@ -35,30 +35,30 @@ class MaxPriorityQueue {
 
   // Restore heap downwards
   heapifyDown() {
-    let index = 0;
+    let currentIndex = 0;
     let length = this.heap.length;
     while (true) {
-      let left = 2 * index + 1;
-      let right = 2 * index + 2;
-      let largest = index;
+      let leftChildIndex = 2 * currentIndex + 1;
+      let rightChildIndex = 2 * currentIndex + 2;
+      let largest = currentIndex;
 
       if (
-        left < length &&
-        this.heap[left].priority > this.heap[largest].priority
+        leftChildIndex < length &&
+        this.heap[leftChildIndex].priority > this.heap[largest].priority
       ) {
-        largest = left;
+        largest = leftChildIndex;
       }
 
       if (
-        right < length &&
+        rightChildIndex < length &&
         this.heap[right].priority > this.heap[largest].priority
       ) {
         largest = right;
       }
 
-      if (largest === index) break;
-      this.swap(index, largest);
-      index = largest;
+      if (largest === currentIndex) break;
+      this.swap(currentIndex, largest);
+      currentIndex = largest;
     }
   }
 
