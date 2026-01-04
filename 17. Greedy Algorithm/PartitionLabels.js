@@ -19,3 +19,8 @@ var partitionLabels = function (s) {
 
   return ans;
 };
+
+/* 
+T - O(n)
+S - O(1)
+*/
